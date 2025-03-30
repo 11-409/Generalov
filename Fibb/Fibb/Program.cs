@@ -8,12 +8,11 @@ namespace Fibb
         {
             var array = new int[,] { { 1, 1 }, { 1, 0 } };
             var result = (int[,])array.Clone();
-            var power = 5;
-
-            if (power > 1)
+            var power = 1;
+            result = new int[,] { { 1, 0 }, { 0, 1 } };
+            if (power > 0)
             {
-                result = new int[,] { { 1, 0 }, { 0, 1 } };
-
+                power -= 1;
                 while (power > 0)
                 {
                     if (power % 2 == 1)
@@ -23,9 +22,13 @@ namespace Fibb
                     array = Multiply(array, array);
                     power /= 2;
                 }
+                Console.WriteLine(result[0, 0]);
+            }
+            else
+            {
+                Console.WriteLine("0");
             }
 
-            Console.WriteLine(result[0, 0]);
         }
         static int[,] Multiply(int[,] a, int[,] b)
         {
